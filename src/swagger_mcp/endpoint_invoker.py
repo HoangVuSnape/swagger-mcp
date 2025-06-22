@@ -4,7 +4,7 @@ import logging
 from typing import Dict, List, Any, Optional, Union
 from swagger_mcp.endpoint import Endpoint
 from swagger_mcp.simple_endpoint import SimpleEndpoint, create_simple_endpoint
-from swagger_mcp.logging import setup_logger
+from swagger_mcp.logging_file import setup_logger
 
 logger = setup_logger(__name__)
 

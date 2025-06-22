@@ -5,7 +5,7 @@ import yaml
 
 from typing import Dict, List, Any, Optional, Union, Set
 from swagger_mcp.endpoint import Endpoint
-from swagger_mcp.logging import setup_logger
+from swagger_mcp.logging_file import setup_logger
 
 logger = setup_logger(__name__)
 
@@ -760,6 +760,7 @@ if __name__ == "__main__":
     parser = OpenAPIParser(spec)
     logger.info("All endpoints:")
     logger.info(parser.to_json())
+    print(parser.to_json())
     
     logger.info("Endpoints with request bodies:")
     for endpoint in parser.endpoints.values():

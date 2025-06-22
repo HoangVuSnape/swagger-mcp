@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 from typing import Dict
-from swagger_mcp.logging import logger
+from swagger_mcp.logging_file import logger
 
 def parse_args(description):
 

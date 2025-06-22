@@ -8,12 +8,12 @@ version = "0.3.0"
 description = "Automatically convert a Swagger/OpenAPI specification into an MCP server"
 authors = [{name = "Context Labs"}]
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 dependencies = [
     "requests",
     "PyYAML",
     "mcp",
-    "fastmcp>=2.8.0",
+    "fastmcp",
     "fastapi",
     "uvicorn",
     "streamlit",
@@ -26,4 +26,12 @@ swagger-mcp-ui = "swagger_mcp.ui_server:main"
 
 [tool.setuptools]
 include-package-data = true
+
+[tool.uv.sources]
+swagger-mcp = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "swagger-mcp",
+]
 

@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Any, Set
 from swagger_mcp.endpoint import Endpoint
-from swagger_mcp.logging import setup_logger
+from swagger_mcp.logging_file import setup_logger
 
 logger = setup_logger(__name__)
 

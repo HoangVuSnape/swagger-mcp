@@ -1,0 +1,11 @@
+command: uv --directory E:/Innotech/swagger-mcp  run swagger-mcp --spec http://localhost:8000/api/v1/openapi.json --name "Product MCP" --server-url http://localhost:8000
+env: {}
+init_timeout: '60'
+request_timeout: '30'
+available:
+  on_your_laptop: true
+  when_isolated: true
+confirmation:
+  ask_user:
+  - '*'
+  deny: []

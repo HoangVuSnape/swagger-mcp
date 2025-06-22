@@ -19,7 +19,7 @@ from swagger_mcp.openapi_parser import OpenAPIParser
 from swagger_mcp.endpoint import Endpoint
 from swagger_mcp.simple_endpoint import SimpleEndpoint, create_simple_endpoint
 from swagger_mcp.endpoint_invoker import EndpointInvoker
-from swagger_mcp.logging import setup_logger
+from swagger_mcp.logging_file import setup_logger
 from swagger_mcp.server_arg_parser import parse_args
 
 logger = setup_logger(__name__)
@@ -103,6 +103,7 @@ class OpenAPIMCPServer:
             tools = []
             
             for operation_id, endpoint in self.simple_endpoints.items():
+                print(f"operation_id: {operation_id}")
                 # Skip deprecated endpoints
                 if endpoint.deprecated:
                     continue
@@ -266,6 +267,7 @@ def run_server(
         const_values: Optional dictionary of parameter names and their constant values
     """
     logger.info(f"Starting OpenAPI MCP Server: {server_name}")
+    print(f"server_name: {server_name}")
     logger.info(f"OpenAPI spec: {openapi_spec}")
     logger.info(f"Server URL: {server_url}")
     if include_pattern:
@@ -287,6 +289,14 @@ def run_server(
         const_values=const_values
     )
     
+    # print("test")
+    # handlers  = server._register_handlers()  # Register the handler
+    # print(type(handlers))
+    # list_tools, call_tools = handlers["list_tools"], handlers["call_tool"]
+    # print(f"list_tools: {list_tools}")
+    # print(f"call_tools: {call_tools}") 
+    # print(list_tools) 
+    
     logger.info("Server initialized, starting main loop")
     asyncio.run(server.run())
 
@@ -306,6 +316,8 @@ def main():
             cursor_mode=args.cursor,
             const_values=const_values
         )
+
+        print("Server started successfully. Press Ctrl+C to stop.")
     except Exception as e:
         logger.error(f"Server failed to start: {str(e)}", exc_info=True)
         raise
